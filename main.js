@@ -19,7 +19,32 @@ class Field{
     }
 
     static generateField(height, width){
-        // keep working here next
+        // create an empty array with the pass values
+        let field = [
+
+        ];
+        const validFieldPieces = ["O", "░", "░"]
+        // createing the empty rows
+        for(let i =0; i < height; i++){
+            field.push([]);
+        }
+        
+        // field the array with characters. 
+        field[0].push("*");
+        for(let j=0; j < height; j++){
+            for(let y = 0; y < width; y++){
+                if(j === 0 & y === 0){
+                    continue;
+                }
+                let randomNum = Math.floor(Math.random() * 3); 
+                field[j].push(validFieldPieces[randomNum]);
+            }
+        }
+
+        let randomRow = Math.floor(Math.random() * (height - 1) + 1);
+        let randomColumn = Math.floor(Math.random() * width);
+        field[randomRow][randomColumn] = "^";
+        return field; 
     }
 }
 
@@ -153,9 +178,7 @@ function findHatLocation(){
 
 
 
-findTheHatGame();
+// findTheHatGame();
 
 
-
-
-
+console.log(Field.generateField(4,4));
